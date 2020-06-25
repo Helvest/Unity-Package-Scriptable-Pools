@@ -1,0 +1,36 @@
+{
+
+	"name": "com.helvest.scriptablepools",
+
+	"version": "1.0.0",
+
+	"displayName": "Scriptable Pool",
+
+	"description": "Script to create ScriptableObjects that you can use as Pools for Components",
+
+	"dependencies":
+	{
+	},
+
+	"keywords":
+	[
+		"Pool",
+
+		"Pooling",
+
+		"ScriptableObject"
+	],
+
+	"author":
+	{
+		"name": "Pedro Dominicé (Helvest)",
+
+		"url": "https://twitter.com/HelvestEpic"
+	},
+
+	"repository": {
+		"url": "https://github.com/Helvest/Unity-Package-Scriptable-Pools.git",
+		"type": "git"
+	}
+	
+}
