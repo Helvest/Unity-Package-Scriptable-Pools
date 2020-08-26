@@ -9,7 +9,7 @@ namespace ScriptablePool
 		#region Variables
 
 		[SerializeReference]
-		private C _prefab;
+		private C _prefab = null;
 
 		protected override GameObject _Prefab => _prefab.gameObject;
 
