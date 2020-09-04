@@ -3,15 +3,15 @@ using UnityEngine;
 
 namespace ScriptablePool
 {
-	public abstract class PoolReference<C> : PoolAbstract where C : Component
+	public abstract class PoolReference<T> : PoolAbstract<T> where T : Component
 	{
 
 		#region Variables
 
 		[SerializeReference]
-		private C _prefab = null;
+		private T _prefab = null;
 
-		protected override GameObject _Prefab => _prefab.gameObject;
+		protected override T _Prefab => _prefab;
 
 		#endregion
 
@@ -19,27 +19,19 @@ namespace ScriptablePool
 
 		protected override void OnEnablePool()
 		{
-#if UNITY_EDITOR
-			GameObject pool = new GameObject($"Pool {_prefab.name}");
-			pool.SetActive(false);
-			pool.isStatic = true;
-
-			_parent = pool.transform;
-			_parent.parent = _bigParent;
-#endif
-
-			GameObject go;
-
-			for (int i = 0; i < _poolOverideSize; i++)
+			for (int i = 0; i < poolOverideSize; i++)
 			{
-				go = Instantiate(_prefab, _parent).gameObject;
-				go.SetActive(false);
+				var component = Instantiate(_prefab, poolParent);
 
-				_poolList.Add(go);
-				_queu.Enqueue(go);
+				var poolObject = new PoolObject<T>(component);
+
+				poolObject.gameObject.SetActive(false);
+
+				_poolList.Add(poolObject);
+				_queu.Enqueue(poolObject);
 
 #if UNITY_EDITOR
-				go.name = $"{_prefab.name}_{i:000}";
+				component.name = $"{_prefab.name}_{i:000}";
 #endif
 			}
 		}
