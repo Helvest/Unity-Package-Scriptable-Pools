@@ -89,7 +89,7 @@ namespace ScriptablePool
 
 				if (poolObject.gameObject)
 				{
-					Transform transform = poolObject.transform;
+					var transform = poolObject.transform;
 
 					transform.SetPositionAndRotation(position, rotation);
 					transform.SetParent(parent);
@@ -106,7 +106,7 @@ namespace ScriptablePool
 
 			if (_poolList.Count < poolMaxSize)
 			{
-				T instance = Instantiate(_Prefab, position, rotation, parent);
+				var instance = Instantiate(_Prefab, position, rotation, parent);
 
 				poolObject = new PoolObject<T>(instance);
 
@@ -313,7 +313,7 @@ namespace ScriptablePool
 		{
 			if (_poolList.Count > poolOverideSize)
 			{
-				var index = _poolList.IndexOf(poolObject);
+				int index = _poolList.IndexOf(poolObject);
 
 				_poolList.RemoveAt(index);
 
@@ -432,7 +432,7 @@ namespace ScriptablePool
 
 			poolOverideSize = poolStartSize;
 
-			GameObject pool = new GameObject(name);
+			var pool = new GameObject(name);
 			pool.SetActive(false);
 			pool.isStatic = true;
 
@@ -448,8 +448,10 @@ namespace ScriptablePool
 			{
 				if (_allPoolsParentDDOL == null)
 				{
-					var allPoolsGo = new GameObject($"Pools DDOL");
-					allPoolsGo.isStatic = true;
+					var allPoolsGo = new GameObject($"Pools DDOL")
+					{
+						isStatic = true
+					};
 					allPoolsGo.SetActive(false);
 
 					DontDestroyOnLoad(allPoolsGo);
@@ -463,8 +465,10 @@ namespace ScriptablePool
 			{
 				if (_allPoolsParent == null)
 				{
-					var allPoolsGo = new GameObject($"Pools");
-					allPoolsGo.isStatic = true;
+					var allPoolsGo = new GameObject($"Pools")
+					{
+						isStatic = true
+					};
 					allPoolsGo.SetActive(false);
 					_allPoolsParent = allPoolsGo.transform;
 				}
