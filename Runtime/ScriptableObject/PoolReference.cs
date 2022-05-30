@@ -6,7 +6,7 @@ namespace ScriptablePool
 	public abstract class PoolReference<T> : PoolAbstract<T> where T : Component
 	{
 
-		#region Variables
+		#region Fields
 
 		[SerializeReference]
 		private T _prefab = null;
