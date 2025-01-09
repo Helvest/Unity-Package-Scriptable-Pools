@@ -9,7 +9,7 @@ namespace ScriptablePool
 
 		#region Variable
 
-		public bool _dontDestroyOnLoad = false;
+		public bool _dontDestroyOnLoad;
 		public ushort poolStartSize = 100;
 		public ushort poolMaxSize = ushort.MaxValue;
 		public ReturnValue returnValue = ReturnValue.Null;
@@ -29,7 +29,7 @@ namespace ScriptablePool
 		[NonSerialized]
 		protected readonly Queue<PoolObject<T>> _queu = new Queue<PoolObject<T>>();
 
-		public ushort poolOverideSize { get; protected set; } = 0;
+		public ushort poolOverideSize { get; protected set; }
 
 		public Transform poolParent { get; protected set; }
 

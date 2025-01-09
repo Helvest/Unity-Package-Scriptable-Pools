@@ -9,7 +9,7 @@ namespace ScriptablePool
 		#region Fields
 
 		[SerializeReference]
-		private T _prefab = null;
+		private T _prefab;
 
 		protected override T _Prefab => _prefab;
 
