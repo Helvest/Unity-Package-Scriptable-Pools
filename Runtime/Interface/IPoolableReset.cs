@@ -1,7 +1,7 @@
 ﻿namespace ScriptablePool
 {
-	public interface IPoolableReset
-	{
-		void PoolReset();
-	}
+public interface IPoolableReset
+{
+	void PoolReset();
+}
 }
